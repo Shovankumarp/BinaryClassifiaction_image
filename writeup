@@ -8,5 +8,29 @@ The repository is for classifying Binary Class Images using Convolutional Neural
     6. Evaluation
     7. Prediction using the trained model
 
+1. Environment Setup
+    The project has been done using
+    Pycharm,
+    Python 3.7,
+    Ubuntu 18.04
+    Tensorflow 2,
+    matplotlib ,
+    EasyTKinter
+
+2. Dataset Information and Downloading
+
+    Horses of Humans is a dataset that contains images of 300 * 300.
+    The dataset is created by Laurence Moroney and licensed CC-By-2.0.
+
+    More information about the dataset, links for downloading are given below:
+
+
+    http://www.laurencemoroney.com/horses-or-humans-dataset/
+
+    training set:
+        https://storage.googleapis.com/laurencemoroney-blog.appspot.com/horse-or-human.zip
+    validation set:
+        https://storage.googleapis.com/laurencemoroney-blog.appspot.com/validation-horse-or-human.zip
+
 Reference:
-[1]
+[1] http://www.laurencemoroney.com/horses-or-humans-dataset/
