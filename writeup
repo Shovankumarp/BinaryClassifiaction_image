@@ -1,0 +1,12 @@
+The repository is for classifying Binary Class Images using Convolutional Neural Network. It has the following steps.
+
+    1. Environment Setup
+    2. Dataset Downloading
+    3. Image Preproessing
+    4. Model Building
+    5. Training
+    6. Evaluation
+    7. Prediction using the trained model
+
+Reference:
+[1]
