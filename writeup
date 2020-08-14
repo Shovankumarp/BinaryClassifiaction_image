@@ -6,7 +6,9 @@ The repository is for classifying Binary Class Images using Convolutional Neural
     4. Model Building
     5. Training
     6. Evaluation
-    7. Prediction using the trained model
+    7. Callbacks
+    8. Prediction using the trained model
+    9. Saving and Loading Weights
 
 1. Environment Setup
     The project has been done using
@@ -32,5 +34,57 @@ The repository is for classifying Binary Class Images using Convolutional Neural
     validation set:
         https://storage.googleapis.com/laurencemoroney-blog.appspot.com/validation-horse-or-human.zip
 
+8. Saving and Loading Weights
+    There are several ways of saving and loading models
+    a. Only saving and loading the model parameters
+
+        from tensorflow.keras.callbacks import ModelCheckpoint
+        checkpoint = ModelCheckpoint('my_model',saving_weights_only= True) [Recommended]
+
+        # Keras Format
+        checkpoint = ModelCheckpoint('keras_model.h5', saving_weights_only= True)
+
+        # loading Weights
+        model.load_weights('my_model') [pass the file name we used during saving the model]
+        model.load_weights('keras_model.h5')
+
+    b. Architecture and Weights
+
+
+    c. Only the Architecture
+
+    Saving the model depending upon the performance,
+    saving depending upon the validation metrics
+
+
+    from tensorflow.keras.callbacks import EarlyStopping
+    early_stopping = EarlyStopping(monitor = 'val_mae', patience = 2 )
+    model.save_weights()
+
+7. Callbacks
+
+    Callbacks are object in Tensorflow that is used to monitor performance and perform actions depending upon the
+    performance. Theare are several builtin callback methods. Callbacks can be applied based upon training, evaluation and prediction.
+
+    from tensorflow.keras.callbacks import Callback
+
+    # my_callback is the subclass the inherit the Callback base class
+    class my_callback(Callback):
+        # Built in callback methods can be overridden
+        def on_train_begin(self, logs = None):
+            # perform some actions at the beginning of the training
+        def on_train_batch_begin(sefl, batch, logs = None):
+            # perform some actions at the start of the every batch
+        def on_epoch_end(self, epoch, logs = None)
+            # perform some actions at the end of every epoch
+
+    model.fit() takes a 'callbacks' argument that is a list of
+    history = model.fit(x_train,y_train,epoch,callbacks = [my_callback()])
+
+
+
+
 Reference:
 [1] http://www.laurencemoroney.com/horses-or-humans-dataset/
+[2] https://www.coursera.org/learn/getting-started-with-tensor-flow2/lecture/bqiHe/saving-and-loading-model-weights   [Model Saving and Loading]
+[3] https://www.tensorflow.org/api_docs/python/tf/keras/callbacks/Callback   [callbacks]
